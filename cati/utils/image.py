@@ -134,19 +134,19 @@ def legend_of_image(square_side, smali_dim):
     end = 0
     for name in smali_dim:
         if first:
-            end = smali_dim[name] + 1
-            xe = end % square_side + 1
-            ye = end // square_side + 1
-            image_legend = f"{name} [1,1] [{xe},{ye}]"
+            end = smali_dim[name]
+            xe = end % square_side
+            ye = end // square_side
+            image_legend = f"{name} [0,0] [{xe},{ye}]"
             first = False
         else:
             start = end + 1
-            xs = start % square_side + 1
-            ys = start // square_side + 1
+            xs = start % square_side
+            ys = start // square_side
 
             end = start + smali_dim[name]
-            xe = end % square_side + 1
-            ye = end // square_side + 1
+            xe = end % square_side
+            ye = end // square_side
             image_legend += f"\n{name} [{xs},{ys}] [{xe},{ye}]"
 
     return image_legend
